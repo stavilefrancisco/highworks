@@ -1,6 +1,4 @@
-﻿import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { useEffect } from "react";
 import StickyHeader from "@/components/StickyHeader";
 import ServiciosDetalleSection from "@/components/ServiciosDetalleSection";
 import ServiciosFAQSection from "@/components/ServiciosFAQSection";
@@ -32,13 +30,6 @@ const Servicios = () => {
       <main>
         <section className="section-padding bg-background pt-28 md:pt-32" aria-label="Introducción">
           <div className="container-main">
-            <nav className="text-sm text-muted-foreground mb-6 flex flex-wrap items-center gap-1" aria-label="Migas de pan">
-              <Link to="/" className="transition-colors hover:text-primary">
-                Inicio
-              </Link>
-              <ChevronRight className="h-4 w-4 shrink-0 opacity-60" aria-hidden />
-              <span className="text-foreground font-medium">Servicios</span>
-            </nav>
             <div className={cn(headingAccentBar, "max-w-2xl")}>
               <h1 className={cn("text-3xl md:text-4xl font-bold text-foreground", headingSection)}>Catálogo de servicios</h1>
             </div>

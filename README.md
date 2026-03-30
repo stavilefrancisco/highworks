@@ -1,4 +1,4 @@
-﻿# High Works — Sitio web
+# High Works — Sitio web
 
 Aplicación **Vite + React + TypeScript** con Tailwind CSS y componentes estilo shadcn/ui.
 
@@ -27,19 +27,6 @@ npm run preview
 ## Favicon
 
 - `public/favicon.png` — icono del sitio (basado en el logo).
-
-## Imágenes de referencia (servicios)
-
-Las fotos del catálogo (`/servicios`) se cargan desde **Unsplash** (URLs en `src/data/servicios.ts`). Son referenciales; podés sustituirlas por fotos propias en `public/` y actualizar las rutas.
-
-| Uso en sitio | Unsplash (foto) |
-|--------------|-----------------|
-| Altura / obra | [photo-1581092160562](https://unsplash.com/photos/1581092160562-40aa08e78837) |
-| Demarcación / pintura | [photo-1565008576549](https://unsplash.com/photos/1565008576549-57569a49371d) |
-| Trabajo técnico / seguridad | [photo-1621905252507](https://unsplash.com/photos/1621905252507-b35492cc74b4) |
-| Limpieza / mantenimiento | [photo-1581578731548](https://unsplash.com/photos/1581578731548-c64695cc6952) |
-
-Condiciones de uso: [Unsplash License](https://unsplash.com/license).
 
 ## Tests
 

@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import { cardElevated, ctaPrimary, headingSection } from "@/lib/cta-styles";
 import { cn } from "@/lib/utils";
@@ -34,7 +34,7 @@ const ContactSection = () => {
   };
 
   const inputClass =
-    "w-full rounded-md border border-border bg-background px-4 py-2.5 text-foreground placeholder:text-muted-foreground transition-shadow duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.12)]";
+    "w-full rounded-md border border-slate-200/90 bg-slate-50 px-4 py-2.5 text-foreground placeholder:text-muted-foreground transition-shadow duration-200 focus:border-primary/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/40 focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]";
 
   return (
     <section id="contacto" className="section-padding bg-warm" aria-label="Contacto">

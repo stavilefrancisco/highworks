@@ -266,9 +266,6 @@
 .animation-delay-300 { animation-delay: 0.3s; }
 .animation-delay-400 { animation-delay: 0.4s; }
 
-  .service-hero-photo:hover {
-    transform: scale(1.02);
-  }
 @media (prefers-reduced-motion: reduce) {
   .cta-primary,
   .cta-primary:hover,
@@ -296,9 +293,5 @@
   .stagger-children-animate > * {
     animation: none !important;
     opacity: 1 !important;
-  }
-  .service-hero-photo,
-  .service-hero-photo:hover {
-    transform: none !important;
   }
 }

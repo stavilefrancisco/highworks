@@ -6,6 +6,7 @@ import { ctaPrimaryCompact } from "@/lib/cta-styles";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { label: "Inicio", to: "/", isRouter: true },
   { label: "Servicios", to: "/servicios", isRouter: true },
   { label: "Protección Anticaída", href: "/#luxtop" },
   { label: "Clientes", href: "/#clientes" },
@@ -24,9 +25,13 @@ const StickyHeader = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinkClass =
-    "text-sm font-medium transition-colors duration-200 " +
-    (isHome && !scrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-primary");
+  const navLinkClass = (isActive: boolean) =>
+    cn(
+      "text-sm font-medium transition-colors duration-200",
+      isHome && !scrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-primary",
+      isActive && !(isHome && !scrolled) && "text-primary font-semibold",
+      isActive && isHome && !scrolled && "text-white font-semibold"
+    );
 
   return (
     <header
@@ -43,11 +48,19 @@ const StickyHeader = () => {
         <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
           {navItems.map((item) =>
             "to" in item && item.isRouter ? (
-              <Link key={item.to} to={item.to} className={navLinkClass}>
+              <Link
+                key={item.to}
+                to={item.to}
+                className={navLinkClass(location.pathname === item.to)}
+              >
                 {item.label}
               </Link>
             ) : (
-              <a key={"href" in item ? item.href : item.to} href={"href" in item ? item.href : item.to} className={navLinkClass}>
+              <a
+                key={"href" in item ? item.href : item.to}
+                href={"href" in item ? item.href : item.to}
+                className={navLinkClass(false)}
+              >
                 {item.label}
               </a>
             )
@@ -75,7 +88,10 @@ const StickyHeader = () => {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="text-base font-medium text-foreground/80 transition-colors hover:text-primary"
+                  className={cn(
+                    "text-base font-medium transition-colors hover:text-primary",
+                    location.pathname === item.to ? "text-primary font-semibold" : "text-foreground/80"
+                  )}
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}

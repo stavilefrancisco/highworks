@@ -1,42 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
-import { serviceCategories, type ServiceCategory, type ServiceCategoryId } from "@/data/servicios";
+import { serviceCategories, type ServiceCategoryId } from "@/data/servicios";
 import { detailServiceCard, detailServiceIcon, linkAccent } from "@/lib/cta-styles";
 import { cn } from "@/lib/utils";
 
 const LUXTOP_URL = "https://lineadevidaluxtop.cl/";
-
-function CategoryHero({ cat }: { cat: ServiceCategory }) {
-  const [broken, setBroken] = useState(false);
-  const showPhoto = Boolean(cat.imageSrc) && !broken;
-
-  return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border border-border bg-muted shadow-sm transition-shadow duration-300 hover:shadow-md">
-      {showPhoto && (
-        <img
-          src={cat.imageSrc}
-          alt={cat.imageAlt ?? cat.title}
-          className="service-hero-photo h-full w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
-          loading="lazy"
-          onError={() => setBroken(true)}
-        />
-      )}
-      {!showPhoto && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/15 to-muted" aria-hidden>
-          <cat.summaryIcon className="h-16 w-16 text-primary/40" strokeWidth={1.25} />
-        </div>
-      )}
-    </div>
-  );
-}
 
 const ServiciosDetalleSection = () => {
   const [expandedCat, setExpandedCat] = useState<ServiceCategoryId | null>(null);
 
   return (
     <section className="section-padding bg-card" aria-label="Detalle de servicios">
-      <div className="container-main space-y-20">
+      <div className="container-main space-y-16 md:space-y-20">
         {serviceCategories.map((cat, catIdx) => {
           const isOther = cat.id === "otros";
           const isExpanded = expandedCat === cat.id;
@@ -49,8 +25,11 @@ const ServiciosDetalleSection = () => {
               className="scroll-mt-28 animate-fade-in-up"
               style={{ animationDelay: `${catIdx * 0.08}s` }}
             >
-              <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-start mb-8">
-                <div>
+              <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-border bg-primary/10 text-primary">
+                  <cat.summaryIcon className="h-7 w-7" strokeWidth={1.5} aria-hidden />
+                </div>
+                <div className="min-w-0 flex-1">
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground">{cat.title}</h2>
                   <p className="mt-2 text-muted-foreground text-lg">{cat.subtitle}</p>
                   {cat.id === "proteccion" && (
@@ -60,14 +39,18 @@ const ServiciosDetalleSection = () => {
                         representantes oficiales de Luxtop
                       </Link>{" "}
                       en Chile y Argentina, ofrecemos sistemas certificados y soporte alineado con estándares europeos.{" "}
-                      <a href={LUXTOP_URL} target="_blank" rel="noopener noreferrer" className={cn(linkAccent, "inline-flex items-center gap-1")}>
+                      <a
+                        href={LUXTOP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(linkAccent, "inline-flex items-center gap-1")}
+                      >
                         Conocer Luxtop
                         <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
                       </a>
                     </p>
                   )}
                 </div>
-                <CategoryHero cat={cat} />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
